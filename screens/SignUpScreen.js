@@ -8,12 +8,12 @@ import { useNavigation } from '@react-navigation/native';
 const backgroundImage = require('../assets/images/Signup.jpg');
 const Logo = require('../assets/images/Logo.png');
 
-// subscribe for more videos like this :)
+
 export default function SignUpScreen() {
     const navigation = useNavigation();
   return (
     <ImageBackground
-    source={backgroundImage} // Change the path to your background image
+    source={backgroundImage}
     style={{ flex: 1, backgroundColor: themeColors.bg }}
   >
     <View className="flex-1 bg-white" style={{backgroundColor: themeColors.bg}}>

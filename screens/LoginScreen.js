@@ -46,6 +46,7 @@ export default function LoginScreen() {
               <Text className="text-[#3da749] mb-5">Forgot Password?</Text>
             </TouchableOpacity>
             <TouchableOpacity 
+              onPress={()=> navigation.navigate('Home')}
               className="py-3 bg-[#3da749] rounded-xl">
                 <Text 
                     className="text-xl font-bold text-center text-white"
