@@ -15,6 +15,7 @@ const Equipments = require('../assets/images/eqCat.png');
 const Product_1 = require('../assets/images/product_1.jpg');
 const Product_1_1 = require('../assets/images/product_1_1.jpg');
 
+
 export default function HomeScreen() {
   const navigation = useNavigation();
 
@@ -146,7 +147,7 @@ export default function HomeScreen() {
 
         </SafeAreaView>
         </ScrollView>
-        <Text className="text-xl text-gray-700 font-bold text-center  md-4">
+        {/* <Text className="text-xl text-gray-700 font-bold text-center  md-4">
             Footer Section
             To be Implemented
         </Text>
@@ -155,7 +156,7 @@ export default function HomeScreen() {
             <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
                 <Text className="font-semibold text-[#3da749] "> Login</Text>
             </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </View>
     </ImageBackground>
