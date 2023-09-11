@@ -111,9 +111,7 @@ export default function SignUpScreen() {
                 value="test12345"
                 placeholder='Enter Password'
             />
-            <TouchableOpacity
-                className="py-3 bg-[#3da749] rounded-xl"
-            >
+            <TouchableOpacity className="py-3 bg-[#3da749] rounded-xl">
                 <Text className="font-xl font-bold text-center text-white">
                     Sign Up
                 </Text>
