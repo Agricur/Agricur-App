@@ -7,6 +7,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import OneItemScreen from '../screens/OneItemScreen';
+import UserAccountScreen from '../screens/UserAccountScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function AppNavigation() {
         <Stack.Screen name="Login" options={{headerShown: false}} component={LoginScreen} />
         <Stack.Screen name="SignUp" options={{headerShown: false}} component={SignUpScreen} />
         <Stack.Screen name="OneItem" options={{headerShown: false}} component={OneItemScreen} />
+        <Stack.Screen name="UserAccount" options={{headerShown: false}} component={UserAccountScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

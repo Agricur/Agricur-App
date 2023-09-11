@@ -176,6 +176,12 @@ export default function HomeScreen() {
             Footer Section
             To be Implemented
         </Text>
+
+            {/* This is only for page making remove this after adding correct position */}
+    <TouchableOpacity onPress={()=> navigation.navigate('UserAccount')}>
+        <Text className="font-semibold text-4xl text-[#e94b4b] "> MyAcount</Text>
+    </TouchableOpacity>
+
         <View className="flex-row justify-center m-7 ">
             <Text className=" font-semibold">Already have an account?</Text>
             <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
