@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 export default function UserAccountScreen() {
   return (
     <SafeAreaView>
-      <Text>User Account Screen To be Implemented</Text>
+      <Text>Shop account</Text>
     </SafeAreaView>
   )
 }
