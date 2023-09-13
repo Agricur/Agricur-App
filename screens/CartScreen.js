@@ -1,6 +1,7 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet,ScrollView } from 'react-native';
+import {ArrowLeftIcon} from 'react-native-heroicons/solid';
 
 const CartScreen = () => {
   const [cartItems, setCartItems] = useState([
@@ -60,7 +61,15 @@ const CartScreen = () => {
 
   return (
     <SafeAreaView>
-              <View className="items-center justify-center">
+      <View className="flex-row ">
+        <TouchableOpacity 
+          onPress={()=> navigation.goBack()}
+          className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
+          <ArrowLeftIcon size="20" color="black" />
+        </TouchableOpacity>
+      </View> 
+
+        <View className="items-center justify-center">
          <Text className="text-center text-2xl font-bold mt-8">Shopping Cart</Text>
          </View>
     <View>

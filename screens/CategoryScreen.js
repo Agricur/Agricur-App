@@ -32,7 +32,13 @@ const CategoryScreen = () => {
         style={{borderTopLeftRadius: 40, borderTopRightRadius: 40,backgroundColor: 'rgba(255, 255, 255, 0.75)'}}
       > 
         <SafeAreaView className="flex">
-       
+        <View className="flex-row ">
+        <TouchableOpacity 
+          onPress={()=> navigation.goBack()}
+          className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
+          <ArrowLeftIcon size="20" color="black" />
+        </TouchableOpacity>
+      </View>        
                
         </SafeAreaView>   
         <View className="flex-row items-center justify-center">

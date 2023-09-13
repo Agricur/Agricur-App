@@ -1,20 +1,21 @@
-import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground,FlatList, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, StyleSheet  } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {ArrowLeftIcon} from 'react-native-heroicons/solid'
-import { useNavigation } from '@react-navigation/native'
+import {ArrowLeftIcon} from 'react-native-heroicons/solid';
+import { useNavigation } from '@react-navigation/native';
 import { themeColors } from '../theme'
 import Icon from 'react-native-vector-icons/FontAwesome5'; 
 
 const Logo = require('../assets/images/Logo.png');
 const backgroundImage = require('../assets/images/regBackground.png');
-const Fruits = require('../assets/images/fruitCat.png');
-const Vegitables = require('../assets/images/vegCat.png');
-const Grains = require('../assets/images/grainCat.png');
-const Fertilizers = require('../assets/images/fertiCat.png');
-const Equipments = require('../assets/images/eqCat.png');
-const Product_1 = require('../assets/images/product_1.jpg');
-const Product_1_1 = require('../assets/images/product_1_1.jpg');
+const Shop1 = require('../assets/images/ShopA.png');
+const Shop2 = require('../assets/images/ShopB.png');
+const Shop3 = require('../assets/images/ShopC.png');
+const Shop4 = require('../assets/images/ShopD.png');
+const Shop5 = require('../assets/images/ShopE.png');
+const Shop6 = require('../assets/images/ShopF.png');
+const Shop7 = require('../assets/images/ShopG.jpg');
+const Shop8 = require('../assets/images/ShopH.png');
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -31,8 +32,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-export default function HomeScreen() {
+const ShopsScreen = () => {
   const navigation = useNavigation();
   return (
     <ImageBackground
@@ -64,96 +64,43 @@ export default function HomeScreen() {
             <Text className="font-bold text-sm italic text-[#205526]  mb-2 ">
               Your Trusted Partner in Agriculture Excellence
             </Text>
-    <TouchableOpacity 
-    onPress={()=> navigation.navigate('Shops')} 
-    className="bg-[#3da749] w-20 h-16 items-center justify-center m-2 rounded-md">
-      <Icon name="store" size={24} color="white" />
-      <Text style={styles.buttonText}>Shops</Text>
-    </TouchableOpacity>
           </View>
         </View>  
-        
+        <Text className="text-2xl font-bold tracking-tight text-center mt-4">
+            All Shops
+        </Text>
         <ScrollView style={{ flex: 1, backgroundColor: themeColors.bg }}>
         <SafeAreaView style={{ flex: 1 }}>
-        <View className="form space-y-2 justify-center items-center">
-        <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Fruits} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Fruits
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Vegitables} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Vegitables
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Grains} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Grains
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Fertilizers} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Fertilizers
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Equipments} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Equipments
-              </Text>
-            </TouchableOpacity>           
-        </View>
         
-        <Text className="text-2xl font-bold tracking-tight text-center m-4">
-            All Products
-        </Text>
+
         
         <View className="flex flex-row justify-between m-4">
           <View className="flex-1">
-          <TouchableOpacity onPress={()=> navigation.navigate('OneItem')}>
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
             <View className="py-3 bg-white w-44 rounded-xl">
               <View  className="flex-row justify-center">
                 <Image 
-                  source={Product_1} 
-                  style={{width: 100, height: 100}} 
+                  source={Shop1} 
+                  style={{width: 150, height: 150}} 
                 />
               </View>
               <Text className="font-xl font-bold text-center text-black">
-                Passion Fruit
+                Shop A
               </Text>
               </View>
             </TouchableOpacity>
           </View>
           <View className="flex-1">
-          <TouchableOpacity onPress={()=> navigation.navigate('OneItem')}>
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
             <View className="py-3 bg-white w-44 rounded-xl">
               <View  className="flex-row justify-center">
                 <Image 
-                  source={Product_1_1} 
-                  style={{width: 100, height: 100}} 
+                  source={Shop2} 
+                  style={{width: 150, height: 150}} 
                 />
               </View>
               <Text className="font-xl font-bold text-center text-black">
-                Passion Fruit
+                Shop B
               </Text>
               </View>
             </TouchableOpacity>
@@ -162,36 +109,103 @@ export default function HomeScreen() {
 
         <View className="flex flex-row justify-between m-4">
           <View className="flex-1">
-          <TouchableOpacity onPress={()=> navigation.navigate('OneItem')}>
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
             <View className="py-3 bg-white w-44 rounded-xl">
               <View  className="flex-row justify-center">
                 <Image 
-                  source={Product_1_1} 
-                  style={{width: 100, height: 100}} 
+                  source={Shop3} 
+                  style={{width: 150, height: 150}} 
                 />
               </View>
               <Text className="font-xl font-bold text-center text-black">
-                Passion Fruit
+                Shop C
               </Text>
               </View>
             </TouchableOpacity>
           </View>
           <View className="flex-1">
-          <TouchableOpacity onPress={()=> navigation.navigate('OneItem')}>
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
             <View className="py-3 bg-white w-44 rounded-xl">
               <View  className="flex-row justify-center">
                 <Image 
-                  source={Product_1} 
-                  style={{width: 100, height: 100}} 
+                  source={Shop4} 
+                  style={{width: 150, height: 150}} 
                 />
               </View>
               <Text className="font-xl font-bold text-center text-black">
-                Passion Fruit
+                Shop D
               </Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
+
+        <View className="flex flex-row justify-between m-4">
+          <View className="flex-1">
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
+            <View className="py-3 bg-white w-44 rounded-xl">
+              <View  className="flex-row justify-center">
+                <Image 
+                  source={Shop5} 
+                  style={{width: 150, height: 150}} 
+                />
+              </View>
+              <Text className="font-xl font-bold text-center text-black">
+                Shop E
+              </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View className="flex-1">
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
+            <View className="py-3 bg-white w-44 rounded-xl">
+              <View  className="flex-row justify-center">
+                <Image 
+                  source={Shop6} 
+                  style={{width: 150, height: 150}} 
+                />
+              </View>
+              <Text className="font-xl font-bold text-center text-black">
+                Shop F
+              </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View className="flex flex-row justify-between m-4">
+          <View className="flex-1">
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
+            <View className="py-3 bg-white w-44 rounded-xl">
+              <View  className="flex-row justify-center">
+                <Image 
+                  source={Shop7} 
+                  style={{width: 150, height: 150}} 
+                />
+              </View>
+              <Text className="font-xl font-bold text-center text-black">
+                Shop G
+              </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View className="flex-1">
+          <TouchableOpacity onPress={()=> navigation.navigate('Shops')}>
+            <View className="py-3 bg-white w-44 rounded-xl">
+              <View  className="flex-row justify-center">
+                <Image 
+                  source={Shop8} 
+                  style={{width: 150, height: 150}} 
+                />
+              </View>
+              <Text className="font-xl font-bold text-center text-black">
+                Shop H
+              </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+        
 
         </SafeAreaView>
         </ScrollView>
@@ -200,3 +214,5 @@ export default function HomeScreen() {
     </ImageBackground>
   )
 }
+
+export default ShopsScreen

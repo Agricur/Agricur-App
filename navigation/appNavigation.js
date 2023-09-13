@@ -10,6 +10,7 @@ import BottomTabNavigator from './bottomTabNavigator';
 import OneItemScreen from '../screens/OneItemScreen';
 import AccountScreen from '../screens/AccountScreen';
 import ShopAccountScreen from '../screens/ShopAccountScreen';
+import ShopsScreen from '../screens/ShopsScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -27,6 +28,7 @@ export default function AppNavigation() {
         <Stack.Screen name="OneItem" component={OneItemScreen} />
         <Stack.Screen name="Account" component={AccountScreen} />
         <Stack.Screen name="ShopAccount" component={ShopAccountScreen} />
+        <Stack.Screen name="Shops"  component={ShopsScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>
