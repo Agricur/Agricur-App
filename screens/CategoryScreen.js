@@ -76,7 +76,13 @@ const CategoryScreen = () => {
         style={{borderTopLeftRadius: 40, borderTopRightRadius: 40,backgroundColor: 'rgba(255, 255, 255, 0.75)'}}
       > 
         <SafeAreaView className="flex">
-       
+        <View className="flex-row ">
+        <TouchableOpacity 
+          onPress={()=> navigation.goBack()}
+          className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
+          <ArrowLeftIcon size="20" color="black" />
+        </TouchableOpacity>
+      </View>        
                
         </SafeAreaView>   
         <View className="flex-row items-center justify-center">
@@ -122,11 +128,8 @@ const CategoryScreen = () => {
 
         </SafeAreaView>
         </ScrollView>
-        <View className="flex-row justify-center m-7 ">
-            <Text className=" font-semibold">Already have an account?</Text>
-            <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
-                <Text className="font-semibold text-[#3da749] "> Login</Text>
-            </TouchableOpacity>
+        
+        <View className=" m-8 ">
         </View> 
       </View>
     </View>

@@ -142,6 +142,7 @@ export default function HomeScreen() {
                 className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
               >
                 <ArrowLeftIcon size="20" color="black" />
+                  
               </TouchableOpacity>
             </View>
           </SafeAreaView>
