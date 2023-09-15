@@ -9,13 +9,57 @@ import { themeColors } from '../theme'
 const Logo = require('../assets/images/Logo.png');
 const backgroundImage = require('../assets/images/regBackground.png');
 const Fruits = require('../assets/images/fruitCat.png');
-const Vegitables = require('../assets/images/vegCat.png');
+const Vegetables = require('../assets/images/vegCat.png');
 const Grains = require('../assets/images/grainCat.png');
 const Fertilizers = require('../assets/images/fertiCat.png');
 const Equipments = require('../assets/images/eqCat.png');
-const Product_1 = require('../assets/images/product_1.jpg');
-const Product_1_1 = require('../assets/images/product_1_1.jpg');
 
+
+const styles = StyleSheet.create({
+categoryGrid: {
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "space-between",
+  paddingHorizontal: 16,
+  marginVertical: 10,
+  marginBottom: 20
+},
+categoryItem: {
+  width: "48%",
+  backgroundColor: "white",
+  borderRadius: 8,
+  padding: 8,
+  marginBottom: 16,
+  overflow: "hidden",
+},
+categoryImage: {
+  width: "100%",
+  height: 150,
+  borderRadius: 8,
+},
+categoryName: {
+  fontSize: 16,
+  fontWeight: "bold",
+  textAlign: "center",
+  padding: 8,
+},
+});
+
+const categories = [
+{ id: "1", name: "Fruits", image: Fruits },
+{
+  id: "2",
+  name: "Vegetables",
+  image: Vegetables
+},
+{ id: "3", name: "Grains", image: Grains},
+{
+  id: "4",
+  name: "Fertilizers",
+  image: Fertilizers
+},
+{ id: "5", name: "Equipments", image: Equipments },
+];
 
 const CategoryScreen = () => {
 
@@ -45,60 +89,37 @@ const CategoryScreen = () => {
             </Text>
           </View>
         </View> 
-        <Text 
-            className="text-[#205526] text-2xl font-semibold text-center m-4">
-            Categories
-        </Text> 
         
         <ScrollView style={{ flex: 1, backgroundColor: themeColors.bg }}>
         <SafeAreaView style={{ flex: 1 }}>
-        <View className="form space-y-2 justify-center items-center">
-        <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Fruits} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Fruits
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Vegitables} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Vegitables
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Grains} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Grains
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Fertilizers} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Fertilizers
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
-            <View  className="flex-row justify-center">
-              <Image source={Equipments} 
-              style={{width: 150, height: 150}} />
-            </View>
-              <Text className="font-xl font-bold text-center text-black">
-                  Equipments
-              </Text>
-            </TouchableOpacity>           
-        </View>
+
+        <View style={styles.categoryContainer}>
+                <Text className="text-2xl font-bold tracking-tight text-center my-1 text-[#205526]">
+                  Categories
+                </Text>
+
+                <View style={styles.categoryGrid}>
+                  {categories.map((category) => (
+                    <TouchableOpacity
+                      key={category.id}
+                      style={styles.categoryItem}
+                      onPress={() => {
+                        // Handle category click here, e.g., navigate to category page
+                        navigation.navigate("Category", {
+                          categoryName: category.name,
+                        });
+                      }}
+                    >
+                      <Image
+                        source={category.image}
+                        style={styles.categoryImage}
+                      />
+                      <Text style={styles.categoryName}>{category.name}</Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </View>
+
         </SafeAreaView>
         </ScrollView>
         <View className="flex-row justify-center m-7 ">

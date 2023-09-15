@@ -6,6 +6,7 @@ import CategoryScreen from "../screens/CategoryScreen";
 import AccountScreen from "../screens/AccountScreen";
 import Icon from "react-native-vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
+import ShopsScreen from "../screens/ShopsScreen";
 
 const TabStack = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ const BottomTabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBarStyle,
-        tabBarIcon: ({ black, size, focused }) => {
+        tabBarIcon: ({ black, focused }) => {
           let iconName;
 
           if (route.name == "Home") {
@@ -25,6 +26,8 @@ const BottomTabNavigator = () => {
             iconName = focused ? "cart" : "cart-outline";
           } else if (route.name == "Categories") {
             iconName = focused ? "list" : "list-outline";
+          } else if (route.name == "Shops") {
+            iconName = focused ? "business" : "business-outline";
           } else if (route.name == "Account") {
             iconName = focused ? "person" : "person-outline";
           }
@@ -33,8 +36,9 @@ const BottomTabNavigator = () => {
       })}
     >
       <TabStack.Screen name="Home" component={HomeScreen} />
-      <TabStack.Screen name="Cart" component={CartScreen} />
+      <TabStack.Screen name="Shops" component={ShopsScreen} />
       <TabStack.Screen name="Categories" component={CategoryScreen} />
+      <TabStack.Screen name="Cart" component={CartScreen} />
       <TabStack.Screen name="Account" component={AccountScreen} />
     </TabStack.Navigator>
   );

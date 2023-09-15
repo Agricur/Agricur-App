@@ -1,14 +1,45 @@
-import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet,ScrollView } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 
 const CartScreen = () => {
   const [cartItems, setCartItems] = useState([
-    { id: '1', name: 'Product 1', price: 10, image: require('../assets/images/product_1.jpg'), quantity: 1 },
-    { id: '2', name: 'Product 2', price: 15, image: require('../assets/images/product_1_1.jpg'), quantity: 1 },
-    { id: '1', name: 'Product 1', price: 10, image: require('../assets/images/product_1.jpg'), quantity: 1 },
-    { id: '2', name: 'Product 2', price: 15, image: require('../assets/images/product_1_1.jpg'), quantity: 1 },
-     
+    {
+      id: "1",
+      name: "Product 1",
+      price: 10,
+      image: require("../assets/images/product_1.jpg"),
+      quantity: 1,
+    },
+    {
+      id: "2",
+      name: "Product 2",
+      price: 15,
+      image: require("../assets/images/product_1_1.jpg"),
+      quantity: 1,
+    },
+    {
+      id: "3",
+      name: "Product 3",
+      price: 10,
+      image: require("../assets/images/product_1.jpg"),
+      quantity: 1,
+    },
+    {
+      id: "4",
+      name: "Product 4",
+      price: 15,
+      image: require("../assets/images/product_1_1.jpg"),
+      quantity: 1,
+    },
   ]);
 
   const calculateTotal = () => {
@@ -40,8 +71,8 @@ const CartScreen = () => {
     <View style={styles.item}>
       <Image source={item.image} style={styles.itemImage} />
       <View style={styles.itemDetails}>
-        <Text className="text-xl font-bold">{item.name}</Text>
-        <Text className="text-gray-500">LKR  {(item.price * item.quantity).toFixed(2)}</Text>
+        <Text style={styles.itemName}>{item.name}</Text>
+        <Text style={styles.itemPrice}>LKR {(item.price * item.quantity).toFixed(2)}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity onPress={() => decreaseQuantity(item)} style={styles.quantityButton}>
             <Text style={styles.quantityButtonText}>-</Text>
@@ -53,51 +84,46 @@ const CartScreen = () => {
         </View>
       </View>
       <TouchableOpacity onPress={() => removeItem(item)} style={styles.removeButton}>
-        <Text className="text-white font-bold">Remove</Text>
+        <Text style={styles.removeButtonText}>Remove</Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
-    <SafeAreaView>
-              <View className="items-center justify-center">
-         <Text className="text-center text-2xl font-bold mt-8">Shopping Cart</Text>
-         </View>
-    <View>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.cartTitle}>Shopping Cart</Text>
+        <FlatList
+          data={cartItems}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+        <View style={styles.totalContainer}>
+          <Text style={styles.totalText}>Total: LKR {calculateTotal().toFixed(2)}</Text>
+          <TouchableOpacity style={styles.checkoutButton}>
+            <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+          </TouchableOpacity>
         </View>
-        <ScrollView>
-          <SafeAreaView>
-    <View style={styles.container}>
-      <FlatList
-        data={cartItems}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-      <View style={styles.totalContainer}>
-        <Text className="font-bold text-xl">Total:  LKR  {calculateTotal().toFixed(2)}</Text>
-         <View>
-         <TouchableOpacity className="py-2 w-48 bg-[#3da749] rounded-xl">
-                <Text className="font-bold text-center text-white">
-                     Proceed to {'\n'}Checkout
-                 </Text>
-           </TouchableOpacity>
-         </View>
       </View>
-    </View>
-          </SafeAreaView>
-          </ScrollView>
-        
-
-
-     
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    padding: 16,
+    padding: 20,
+    marginBottom: 80,
+  },
+  cartTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 8,
+    marginBottom: 30,
+    textAlign: 'center',
   },
   item: {
     flexDirection: 'row',
@@ -112,6 +138,14 @@ const styles = StyleSheet.create({
   },
   itemDetails: {
     flex: 1,
+  },
+  itemName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  itemPrice: {
+    fontSize: 16,
+    color: 'gray',
   },
   quantityContainer: {
     flexDirection: 'row',
@@ -138,13 +172,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 5,
   },
+  removeButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   totalContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 16,
+    marginBottom: 20,
   },
-
+  totalText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  checkoutButton: {
+    backgroundColor: '#3da749',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 5,
+  },
+  checkoutButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
 
 export default CartScreen;
