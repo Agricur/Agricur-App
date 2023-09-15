@@ -2,8 +2,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet,ScrollView } from 'react-native';
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
+import { useNavigation } from '@react-navigation/native'
 
 const CartScreen = () => {
+  const navigation = useNavigation();
   const [cartItems, setCartItems] = useState([
     { id: '1', name: 'Product 1', price: 10, image: require('../assets/images/product_1.jpg'), quantity: 1 },
     { id: '2', name: 'Product 2', price: 15, image: require('../assets/images/product_1_1.jpg'), quantity: 1 },
@@ -39,7 +41,7 @@ const CartScreen = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Image source={item.image} style={styles.itemImage} />
+      <Image source={item.image} className="w-24 h-24 m-4" />
       <View style={styles.itemDetails}>
         <Text className="text-xl font-bold">{item.name}</Text>
         <Text className="text-gray-500">LKR  {(item.price * item.quantity).toFixed(2)}</Text>
@@ -60,6 +62,7 @@ const CartScreen = () => {
   );
 
   return (
+    
     <SafeAreaView>
       <View className="flex-row ">
         <TouchableOpacity 
@@ -69,14 +72,12 @@ const CartScreen = () => {
         </TouchableOpacity>
       </View> 
 
-        <View className="items-center justify-center">
-         <Text className="text-center text-2xl font-bold mt-8">Shopping Cart</Text>
-         </View>
-    <View>
-        </View>
-        <ScrollView>
-          <SafeAreaView>
-    <View style={styles.container}>
+      <View className="items-center justify-center">
+        <Text className="text-center text-2xl font-bold mt-2">Shopping Cart</Text>
+      </View>
+      <ScrollView>
+      <SafeAreaView>
+      <View style={styles.container}>
       <FlatList
         data={cartItems}
         renderItem={renderItem}
@@ -106,18 +107,12 @@ const CartScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 8,
   },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 16,
-  },
-  itemImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 5,
-    marginRight: 16,
   },
   itemDetails: {
     flex: 1,

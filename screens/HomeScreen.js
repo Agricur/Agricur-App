@@ -76,7 +76,9 @@ export default function HomeScreen() {
         <ScrollView style={{ flex: 1, backgroundColor: themeColors.bg }}>
         <SafeAreaView style={{ flex: 1 }}>
         <View className="form space-y-2 justify-center items-center">
-        <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
+        <TouchableOpacity 
+            onPress={()=> navigation.navigate('InsideCategory')}
+            className="py-3 bg-white w-64 rounded-xl">
             <View  className="flex-row justify-center">
               <Image source={Fruits} 
               style={{width: 150, height: 150}} />
@@ -84,7 +86,7 @@ export default function HomeScreen() {
               <Text className="font-xl font-bold text-center text-black">
                   Fruits
               </Text>
-            </TouchableOpacity>
+        </TouchableOpacity>
             <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
             <View  className="flex-row justify-center">
               <Image source={Vegitables} 
@@ -192,9 +194,10 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
         </View>
-
         </SafeAreaView>
         </ScrollView>
+        <View className=" m-8 ">
+        </View> 
       </View>
     </View>
     </ImageBackground>

@@ -52,14 +52,16 @@ const CategoryScreen = () => {
           </View>
         </View> 
         <Text 
-            className="text-[#205526] text-2xl font-semibold text-center m-4">
+            className="text-[#205526] text-2xl font-semibold text-center m-2">
             Categories
         </Text> 
         
         <ScrollView style={{ flex: 1, backgroundColor: themeColors.bg }}>
         <SafeAreaView style={{ flex: 1 }}>
         <View className="form space-y-2 justify-center items-center">
-        <TouchableOpacity className="py-3 bg-white w-64 rounded-xl">
+        <TouchableOpacity 
+          onPress={()=> navigation.navigate('InsideCategory')}
+          className="py-3 bg-white w-64 rounded-xl">
             <View  className="flex-row justify-center">
               <Image source={Fruits} 
               style={{width: 150, height: 150}} />
@@ -107,11 +109,8 @@ const CategoryScreen = () => {
         </View>
         </SafeAreaView>
         </ScrollView>
-        <View className="flex-row justify-center m-7 ">
-            <Text className=" font-semibold">Already have an account?</Text>
-            <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
-                <Text className="font-semibold text-[#3da749] "> Login</Text>
-            </TouchableOpacity>
+        
+        <View className=" m-8 ">
         </View> 
       </View>
     </View>
