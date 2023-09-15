@@ -12,7 +12,7 @@ const AccountScreen = () => {
     <SafeAreaView>
       <View className="flex-row ">
         <TouchableOpacity 
-          onPress={()=> navigation.navigate('Home')}
+          onPress={()=> navigation.goBack()}
           className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
           <ArrowLeftIcon size="20" color="black" />
         </TouchableOpacity>
@@ -27,9 +27,7 @@ const AccountScreen = () => {
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 border-white placeholder:rounded-md w-60 items-center hover:bg-[#c4e660] "
-        // onPress={() => {
-        // }}
-        >
+        onPress={() => navigation.navigate('') }>
         <Text className="text-lg font-bold">Edit Profile</Text>
       </TouchableOpacity>
       </View>
@@ -37,36 +35,28 @@ const AccountScreen = () => {
       <View className="mb-2">    
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 rounded-md w-60 items-center hover:bg-[#c4e660]"
-        // onPress={() => {
-        // }}
-        >
+        onPress={() => navigation.navigate('MyOrders') }>
         <Text className="text-lg font-bold">My Orders</Text>
       </TouchableOpacity>
       </View>  
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 rounded-md w-60 items-center hover:bg-[#c4e660]"
-        // onPress={() => {
-        // }}
-        >
+        onPress={() => navigation.navigate('') }>
         <Text className=" text-lg font-bold">Messages</Text>
       </TouchableOpacity>
       </View>  
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 rounded-md w-60 items-center hover:bg-[#c4e660]"
-        // onPress={() => {
-        // }}
-        >
+        onPress={() => navigation.navigate('') }>
         <Text className="text-lg font-bold">Shopping History</Text>
       </TouchableOpacity>
       </View>
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 rounded-md w-60 items-center hover:bg-[#c4e660]"
-        // onPress={() => {
-        // }}
-        >
+        onPress={() => navigation.navigate('Welcome') }>
         <Text className="text-[#f33737] text-lg font-bold">Log out</Text>
       </TouchableOpacity>
       </View>  

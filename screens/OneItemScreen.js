@@ -12,7 +12,7 @@ export default function OneItemScreen() {
     <SafeAreaView>
        <View className="flex-row ">
             <TouchableOpacity 
-                onPress={()=> navigation.navigate('Home')}
+                onPress={()=> navigation.goBack()}
                 className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
 >
                 <ArrowLeftIcon size="20" color="black" />
@@ -23,7 +23,7 @@ export default function OneItemScreen() {
         
         {/* Box 1: Product Image */}
         <View className="rounded bg-[#FAFAFA]">
-        <View className="p-2">
+        <View className="pt-2 pl-3 pr-3">
           <View className="flex-1 ">
             <Image source={Product_1} className = "w-full h-64" />
           </View>
@@ -31,8 +31,9 @@ export default function OneItemScreen() {
         </View>
 
         {/* Box 2: Product Info */}
+        <View className="mb-8">
         <View className="rounded p-1 bg-[#FAFAFA] mx-2">
-        <View style={{ backgroundColor: 'lightgray', padding: 10 }}>
+        <View className="bg-[#cfd4d0] p-5">
           <Text className="text-2xl font-bold">Passion Fruit</Text>
           <View>
             <Text>Ratings</Text>
@@ -54,49 +55,45 @@ export default function OneItemScreen() {
 
         {/* Box 3: Delivery Section */}
         <View className="rounded p-1 bg-[#FAFAFA] mx-2">
-        <View style={{ backgroundColor: 'lightgray', padding: 10 }}>
-            <Text className="text-xl font-bold mb-2">Delivery</Text>
-            <View className="flex  mb-2">
-            <View className="mr-2">
-                {/* <FaMapMarkerAlt /> */}
-                </View>
-              <Text>Delivery Address</Text>
-              <TouchableOpacity>
-                <Text className="ml-auto text-blue-500">Change</Text>
-              </TouchableOpacity>
+        <View className="bg-[#cfd4d0] p-5">
+          <Text className="text-xl font-bold mb-2">Delivery</Text>
+
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ flex: 1 }}>Delivery Address</Text>
+                <TouchableOpacity>
+                  <Text style={{ color: 'blue' }}>Change</Text>
+                </TouchableOpacity>
               </View>
-            <View className="flex  mb-2">
-            <View className="mr-2">
-                {/* <FaTruck /> */}
-                </View>
-                <Text>Estimated Delivery Date</Text>
-              <Text className="ml-auto">Delivery Cost</Text>
+
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ flex: 1 }}>Estimated Delivery Date</Text>
+                <Text style={{ color: 'black' }}>Delivery Cost</Text>
               </View>
-            <View className="flex ">
-            <View className="mr-2">
-                {/* <FaMoneyBillWave /> */}
-                </View>
-                <Text>Payment Method</Text>
-              <TouchableOpacity >
-                <Text className="ml-auto text-blue-500">Change</Text></TouchableOpacity>
+              
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={{ flex: 1 }}>Payment Method</Text>
+                <TouchableOpacity>
+                  <Text style={{ color: 'blue' }}>Change</Text>
+                </TouchableOpacity>
               </View>
-              </View>    
+
+          </View>    
         </View>
       
 
         {/* Box 4: Shop Information */}
         <View className="rounded p-1 bg-[#FAFAFA] mx-2">
-        <View style={{ backgroundColor: 'lightgray', padding: 10 }}>
+        <View className="bg-[#cfd4d0] p-5">
           <Text className="text-xl font-bold mb-2">Shop Name</Text>
           <TouchableOpacity className="py-3 bg-[#3da749] rounded-3xl">
-                <Text className="font-xl font-bold text-center text-white">
+                <Text className="font-xl font-bold text-center text-white ">
                     Visit Store
                 </Text>
           </TouchableOpacity>
         </View>
         </View>
+        </View>
       </ScrollView>
-    
     </SafeAreaView>
     
   )

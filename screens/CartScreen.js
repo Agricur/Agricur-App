@@ -1,16 +1,12 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+
+import { SafeAreaView } from 'react-native-safe-area-context';
+import React, { useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet,ScrollView } from 'react-native';
+import {ArrowLeftIcon} from 'react-native-heroicons/solid';
+import { useNavigation } from '@react-navigation/native'
 
 const CartScreen = () => {
+  const navigation = useNavigation();
   const [cartItems, setCartItems] = useState([
     {
       id: "1",
@@ -69,7 +65,7 @@ const CartScreen = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Image source={item.image} style={styles.itemImage} />
+      <Image source={item.image} className="w-24 h-24 m-4" />
       <View style={styles.itemDetails}>
         <Text style={styles.itemName}>{item.name}</Text>
         <Text style={styles.itemPrice}>LKR {(item.price * item.quantity).toFixed(2)}</Text>
@@ -90,6 +86,7 @@ const CartScreen = () => {
   );
 
   return (
+
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.cartTitle}>Shopping Cart</Text>
@@ -124,17 +121,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 30,
     textAlign: 'center',
+
   },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 16,
-  },
-  itemImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 5,
-    marginRight: 16,
   },
   itemDetails: {
     flex: 1,
