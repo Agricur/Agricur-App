@@ -12,8 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { themeColors } from "../theme";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import DropDown from "../navigation/DropDown";
+
 
 const Logo = require("../assets/images/Logo.png");
 const backgroundImage = require("../assets/images/regBackground.png");
