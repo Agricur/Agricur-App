@@ -13,6 +13,7 @@ import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { themeColors } from "../theme";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import DropDown from "../navigation/DropDown";
 
 const Logo = require("../assets/images/Logo.png");
 const backgroundImage = require("../assets/images/regBackground.png");
@@ -155,10 +156,12 @@ export default function HomeScreen() {
               <Text className="font-bold text-sm italic text-[#205526]  mb-2 ">
                 Your Trusted Partner in Agriculture Excellence
               </Text>
-              <TouchableOpacity className="bg-[#3da749] w-20 h-16 items-center justify-center m-2 rounded-md">
+              {/* <TouchableOpacity 
+              onPress={() => navigation.navigate(DropDown)}
+              className="bg-[#3da749] w-5 h-5 items-center justify-center m-2 rounded-md">
                 <Icon name="store" size={24} color="white" />
-                <Text style={styles.buttonText}>Shops</Text>
-              </TouchableOpacity>
+      
+              </TouchableOpacity> */}
             </View>
           </View>
 
@@ -181,7 +184,6 @@ export default function HomeScreen() {
                       key={category.id}
                       style={styles.categoryItem}
                       onPress={() => {
-                        // Handle category click here, e.g., navigate to category page
                         navigation.navigate("Category", {
                           categoryName: category.name,
                         });

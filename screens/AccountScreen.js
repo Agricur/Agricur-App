@@ -1,14 +1,28 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import React from 'react'
+import { themeColors } from '../theme'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 
+const backgroundImage = require('../assets/images/Signup.jpg');
 const profilePhoto = require('../assets/images/userImage.png');
 
 const AccountScreen = () => {
   const navigation = useNavigation();
   return (
+    <ImageBackground
+    source={backgroundImage}
+    style={{ flex: 1, backgroundColor: themeColors.bg }}
+  >
+    <View
+          className="flex-1 bg-white "
+          style={{
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          }}
+        >
     <SafeAreaView>
       <View className="flex-row ">
         <TouchableOpacity 
@@ -27,7 +41,7 @@ const AccountScreen = () => {
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 border-white placeholder:rounded-md w-60 items-center hover:bg-[#c4e660] "
-        onPress={() => navigation.navigate('') }>
+        onPress={() => navigation.navigate('AccountEdit') }>
         <Text className="text-lg font-bold">Edit Profile</Text>
       </TouchableOpacity>
       </View>
@@ -42,14 +56,14 @@ const AccountScreen = () => {
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 rounded-md w-60 items-center hover:bg-[#c4e660]"
-        onPress={() => navigation.navigate('') }>
+        onPress={() => navigation.navigate('Message') }>
         <Text className=" text-lg font-bold">Messages</Text>
       </TouchableOpacity>
       </View>  
       <View className="mb-2">
       <TouchableOpacity
         className="bg-[#badfa2] font-bold p-4 rounded-md w-60 items-center hover:bg-[#c4e660]"
-        onPress={() => navigation.navigate('') }>
+        onPress={() => navigation.navigate('OrderHistory') }>
         <Text className="text-lg font-bold">Shopping History</Text>
       </TouchableOpacity>
       </View>
@@ -63,9 +77,9 @@ const AccountScreen = () => {
    
 
       </View>
-    
-
     </SafeAreaView>
+    </View>
+    </ImageBackground>
   )
 }
 

@@ -20,18 +20,18 @@ export default function WelcomeScreen() {
             </View>
             <View className="space-y-4">
                 <TouchableOpacity
-                    onPress={()=> navigation.navigate('SignUp')}
+                    onPress={()=> navigation.navigate('Login')}
                     className="py-3 bg-[#3da749] mx-7 rounded-xl">
                         <Text 
                             className="text-xl font-bold text-center text-white"
                         >
-                            Sign Up
+                            Sign In
                         </Text>
                 </TouchableOpacity>
                 <View className="flex-row justify-center">
-                    <Text className="text-black font-semibold">Already have an account?</Text>
-                    <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
-                        <Text className="font-semibold text-[#3da749]"> Log In</Text>
+                    <Text className="text-black font-semibold">Creat a new account</Text>
+                    <TouchableOpacity onPress={()=> navigation.navigate('SignUp')}>
+                        <Text className="font-semibold text-[#3da749]"> Sign up</Text>
                     </TouchableOpacity>
                 </View>
             </View>

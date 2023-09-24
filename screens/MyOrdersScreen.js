@@ -1,13 +1,29 @@
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native'
 import React from 'react'
+import { themeColors } from '../theme'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 
+const backgroundImage = require('../assets/images/Signup.jpg');
+
 const MyOrdersScreen = () => {
   const navigation = useNavigation();
   return (
+    <ImageBackground
+    source={backgroundImage}
+    style={{ flex: 1, backgroundColor: themeColors.bg }}
+  >
+    <View
+          className="flex-1 bg-white "
+          style={{
+            borderTopLeftRadius: 40,
+            borderTopRightRadius: 40,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          }}
+        >
+    
     <SafeAreaView>
       <View className="flex-row ">
         <TouchableOpacity 
@@ -16,9 +32,7 @@ const MyOrdersScreen = () => {
           <ArrowLeftIcon size="20" color="black" />
         </TouchableOpacity>
       </View> 
-      <View className="bg-white-600 text-black text-center m-2">
-          <Text className="text-center text-2xl font-bold ">Current Orders</Text>
-      </View>
+
 
 <ScrollView>
       <View className="bg-white-600 text-black text-center m-2">
@@ -84,6 +98,8 @@ const MyOrdersScreen = () => {
     
 
     </SafeAreaView>
+    </View>
+    </ImageBackground>
   )
 }
 
