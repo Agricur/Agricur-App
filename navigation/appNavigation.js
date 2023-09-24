@@ -12,6 +12,10 @@ import AccountScreen from '../screens/AccountScreen';
 import InsideCategoryScreen from '../screens/InsideCategoryScreen';
 import ShopsScreen from '../screens/ShopsScreen';
 import MyOrdersScreen from '../screens/MyOrdersScreen'; 
+import DropDown from './DropDown';
+import OrderHistoryScreen from '../screens/OrderHistoryScreen'; 
+import AccountEditScreen from '../screens/AccountEditScreen';  
+import MessageScreen from '../screens/MessageScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -31,7 +35,10 @@ export default function AppNavigation() {
         <Stack.Screen name="InsideCategory" component={InsideCategoryScreen} />
         <Stack.Screen name="Shops"  component={ShopsScreen} />
         <Stack.Screen name="MyOrders"  component={MyOrdersScreen} />
-
+        <Stack.Screen name="DropDown"  component={DropDown} />
+        <Stack.Screen name="OrderHistory" component={OrderHistoryScreen} /> 
+        <Stack.Screen name="AccountEdit" component={AccountEditScreen} />
+        <Stack.Screen name="Message" component={MessageScreen} />
 
       </Stack.Navigator>
     </NavigationContainer>

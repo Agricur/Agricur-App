@@ -1,16 +1,49 @@
-import { View, Text, TouchableOpacity, Image, TextInput, ScrollView, ImageBackground } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, Image, TextInput, ScrollView, ImageBackground,Button,StyleSheet  } from 'react-native'
+import React, { useState } from 'react';
 import { themeColors } from '../theme'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
-
+import { Dropdown } from 'react-native-element-dropdown';
 const backgroundImage = require('../assets/images/Signup.jpg');
 const Logo = require('../assets/images/Logo.png');
 
 
+const districts = [
+    { label: 'Colombo', value: 'Colombo' },
+    { label: 'Gampaha', value: 'Gampaha' },
+    { label: 'Kalutara', value: 'Kalutara' },
+    { label: 'Kandy', value: 'Kandy' },
+    { label: 'Matale', value: 'Matale' },
+    { label: 'Nuwara Eliya', value: 'Nuwara Eliya' },
+    { label: 'Galle', value: 'Galle' },
+    { label: 'Matara', value: 'Matara' },
+    { label: 'Hambantota', value: 'Hambantota' },
+    { label: 'Jaffna', value: 'Jaffna' },
+    { label: 'Kilinochchi', value: 'Kilinochchi' },
+    { label: 'Mannar', value: 'Mannar' },
+    { label: 'Vavuniya', value: 'Vavuniya' },
+    { label: 'Mullaitivu', value: 'Mullaitivu' },
+    { label: 'Batticaloa', value: 'Batticaloa' },
+    { label: 'Ampara', value: 'Ampara' },
+    { label: 'Trincomalee', value: 'Trincomalee' },
+    { label: 'Kurunegala', value: 'Kurunegala' },
+    { label: 'Puttalam', value: 'Puttalam' },
+    { label: 'Anuradhapura', value: 'Anuradhapura' },
+    { label: 'Polonnaruwa', value: 'Polonnaruwa' },
+    { label: 'Badulla', value: 'Badulla' },
+    { label: 'Moneragala', value: 'Moneragala' },
+    { label: 'Ratnapura', value: 'Ratnapura' },
+    { label: 'Kegalle', value: 'Kegalle' },
+  ];
+
+
 export default function SignUpScreen() {
     const navigation = useNavigation();
+    const [value, setValue] = useState(null);
+    const goBack = () => {
+        navigation.navigate(DropDown);
+      };
   return (
     <ImageBackground
     source={backgroundImage}
@@ -86,11 +119,24 @@ export default function SignUpScreen() {
                 placeholder='Enter City'
             />
             <Text className="text-gray-700 font-semibold ml-4">Select District</Text>
-            <TextInput
-                className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="District"
-                placeholder='Enter District'
-            />
+            <Dropdown
+                    className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
+                    selectedTextStyle={styles.selectedTextStyle}
+                    data={districts}
+                    maxHeight={400}
+                    labelField="label"
+                    valueField="value"
+                    placeholder="Select District"
+                    searchPlaceholder="Search..."
+                    value={value}
+                    onChange={item => {
+                    setValue(item.value);
+                    }}
+                    
+
+                />
+ 
+            
             <Text className="font-semibold  ml-4">Phone Number</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
@@ -133,3 +179,8 @@ export default function SignUpScreen() {
     </ImageBackground>
   )
 }
+const styles = StyleSheet.create({
+    selectedTextStyle: {
+      fontSize: 14,
+    },
+  });
