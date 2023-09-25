@@ -67,29 +67,36 @@ const CartScreen = () => {
     <View style={styles.item}>
       <Image source={item.image} className="w-24 h-24 m-4" />
       <View style={styles.itemDetails}>
-        <Text style={styles.itemName}>{item.name}</Text>
-        <Text style={styles.itemPrice}>LKR {(item.price * item.quantity).toFixed(2)}</Text>
+        <Text className="text-lg">{item.name}</Text>
+        <Text className="text-gray-700">LKR {(item.price * item.quantity).toFixed(2)}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity onPress={() => decreaseQuantity(item)} style={styles.quantityButton}>
-            <Text style={styles.quantityButtonText}>-</Text>
+            <Text className="text-white font-bold">-</Text>
           </TouchableOpacity>
-          <Text style={styles.quantityText}>{item.quantity}</Text>
+          <Text className="text-lg">{item.quantity}</Text>
           <TouchableOpacity onPress={() => increaseQuantity(item)} style={styles.quantityButton}>
-            <Text style={styles.quantityButtonText}>+</Text>
+            <Text className="text-white font-bold">+</Text>
           </TouchableOpacity>
         </View>
       </View>
       <TouchableOpacity onPress={() => removeItem(item)} style={styles.removeButton}>
-        <Text style={styles.removeButtonText}>Remove</Text>
+        <Text className="text-white font-bold">Remove</Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
 
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.cartTitle}>Shopping Cart</Text>
+    <SafeAreaView className="flex-1">
+      <View className="flex-row ">
+        <TouchableOpacity 
+          onPress={()=> navigation.goBack()}
+          className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
+          <ArrowLeftIcon size="20" color="black" />
+        </TouchableOpacity>
+      </View> 
+      <View className="flex-1 m-1">
+        <Text className="text-center text-2xl font-bold mb-2">Shopping Cart</Text>
         <FlatList
           data={cartItems}
           renderItem={renderItem}
@@ -97,8 +104,8 @@ const CartScreen = () => {
         />
         <View style={styles.totalContainer}>
           <Text style={styles.totalText}>Total: LKR {calculateTotal().toFixed(2)}</Text>
-          <TouchableOpacity style={styles.checkoutButton}>
-            <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+          <TouchableOpacity className="bg-[#3da749] m-2">
+            <Text className="text-white font-bold">Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -107,22 +114,7 @@ const CartScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    padding: 20,
-    marginBottom: 80,
-  },
-  cartTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginTop: 8,
-    marginBottom: 30,
-    textAlign: 'center',
-
-  },
+  
   item: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -130,14 +122,6 @@ const styles = StyleSheet.create({
   },
   itemDetails: {
     flex: 1,
-  },
-  itemName: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  itemPrice: {
-    fontSize: 16,
-    color: 'gray',
   },
   quantityContainer: {
     flexDirection: 'row',
@@ -150,29 +134,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: 8,
   },
-  quantityButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
-  quantityText: {
-    fontSize: 18,
-  },
   removeButton: {
     backgroundColor: '#f33737',
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 5,
   },
-  removeButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
   totalContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 60,
   },
   totalText: {
     fontSize: 20,
@@ -180,13 +152,9 @@ const styles = StyleSheet.create({
   },
   checkoutButton: {
     backgroundColor: '#3da749',
-    paddingVertical: 12,
+    paddingVertical: 28,
     paddingHorizontal: 24,
     borderRadius: 5,
-  },
-  checkoutButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
   },
 });
 

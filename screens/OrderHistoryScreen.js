@@ -12,7 +12,7 @@ const completedOrders = [
     id: '1',
     orderNumber: 'ORD123456',
     date: '2023-09-15',
-    status: 'Processing',
+    status: 'Completed',
     totalAmount: 'Rs. 465',
     productName: 'Product A',
     productImage: require('../assets/images/product_1_1.jpg'), // Replace with your image path
@@ -21,7 +21,7 @@ const completedOrders = [
     id: '2',
     orderNumber: 'ORD123456',
     date: '2023-09-15',
-    status: 'Processing',
+    status: 'Completed',
     totalAmount: 'Rs. 465',
     productName: 'Rs. 465',
     productImage: require('../assets/images/product_1_1.jpg'), // Replace with your image path
@@ -30,7 +30,7 @@ const completedOrders = [
     id: '3',
     orderNumber: 'ORD123456',
     date: '2023-09-15',
-    status: 'Shipped',
+    status: 'Completed',
     totalAmount: 'Rs. 465',
     productName: 'Product A',
     productImage: require('../assets/images/product_1_1.jpg'), // Replace with your image path
@@ -40,7 +40,7 @@ const completedOrders = [
     id: '4',
     orderNumber: 'ORD123456',
     date: '2023-09-15',
-    status: 'Pending',
+    status: 'Completed',
     totalAmount: 'Rs. 562',
     productName: 'Product A',
     productImage: require('../assets/images/product_1_1.jpg'), // Replace with your image path
@@ -48,7 +48,7 @@ const completedOrders = [
 ];
 
 
-const MyOrdersScreen = () => {
+const OrderHistoryScreen = () => {
     const navigation = useNavigation();
     return (
         <ImageBackground
@@ -74,7 +74,7 @@ const MyOrdersScreen = () => {
         </SafeAreaView>
 
         <View className="flex-1 p-2">
-          <Text className="text-center text-2xl mb-4 font-bold">Current Orders</Text>
+          <Text className="text-center text-2xl mb-4 font-bold">Order History</Text>
           <ScrollView>
             {completedOrders.map((order) => (
               <View key={order.id} className=" p-2 bg-[#dde4d8] m-1 rounded-lg">
@@ -106,4 +106,4 @@ const MyOrdersScreen = () => {
   )
 }
 
-export default MyOrdersScreen
+export default OrderHistoryScreen

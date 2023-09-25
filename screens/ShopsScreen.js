@@ -205,9 +205,9 @@ const ShopsScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-        
-
         </SafeAreaView>
+        <View className=" m-8 ">
+        </View> 
         </ScrollView>
       </View>
     </View>
