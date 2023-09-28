@@ -1,9 +1,9 @@
-import { View, Text, TouchableOpacity, ImageBackground, FlatList, Image, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, ImageBackground, FlatList, Image, StyleSheet } from 'react-native'
 import React from 'react'
 import { themeColors } from '../theme'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
-import { useNavigation } from '@react-navigation/native';
+
 
 const backgroundImage = require('../assets/images/Signup.jpg');
 const Shop1 = require('../assets/images/ShopA.png');
@@ -94,8 +94,10 @@ chatData.sort((a, b) => {
   return timeB - timeA;
 });
 
-const MessageScreen = () => {
+const MessageScreen = ( { navigation }) => {
   const renderItem = ({ item }) => (
+
+    <TouchableOpacity onPress={() => navigation.navigate('Chat',{item: item})}>
     <View className="flex-row items-center justify-between rounded-lg m-0.5 p-4 border-b border-[#3da749]  bg-[#d3f3be]">
       <Image source={item.image } style={styles.image} />
       <View style={styles.chatContent}>
@@ -104,9 +106,9 @@ const MessageScreen = () => {
       </View>
       <Text className="text-xs">{item.timestamp}</Text>
     </View>
+    </TouchableOpacity>
   );
 
-  const navigation = useNavigation();
   return (
     <ImageBackground
     source={backgroundImage}
