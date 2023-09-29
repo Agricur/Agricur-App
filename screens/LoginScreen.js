@@ -50,7 +50,7 @@ export default function LoginScreen() {
                 <Text 
                     className="text-xl font-bold text-center text-white"
                 >
-                  Login
+                  Sign In
                 </Text>
              </TouchableOpacity>
             
