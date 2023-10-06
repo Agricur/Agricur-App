@@ -5,7 +5,8 @@ import { themeColors } from "../theme";
 
 const backgroundImage = require("../assets/images/regBackground.png");
 
-const CartScreen = () => {
+const CartScreen = ({ navigation }) => {
+
   const [cartItems, setCartItems] = useState([
     {
       id: "1",
@@ -107,7 +108,7 @@ const CartScreen = () => {
         />
         <View style={styles.totalContainer}>
           <Text style={styles.totalText}>Total: LKR {calculateTotal().toFixed(2)}</Text>
-          <TouchableOpacity style={styles.checkoutButton}>
+          <TouchableOpacity style={styles.checkoutButton} onPress={() => navigation.navigate("Checkout")}>
             <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>
