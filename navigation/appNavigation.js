@@ -16,6 +16,8 @@ import DropDown from './DropDown';
 import OrderHistoryScreen from '../screens/OrderHistoryScreen'; 
 import AccountEditScreen from '../screens/AccountEditScreen';  
 import MessageScreen from '../screens/MessageScreen';
+import ChatScreen from '../screens/ChatScreen';
+import CheckoutScreen from '../screens/CheckoutScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +41,9 @@ export default function AppNavigation() {
         <Stack.Screen name="OrderHistory" component={OrderHistoryScreen} /> 
         <Stack.Screen name="AccountEdit" component={AccountEditScreen} />
         <Stack.Screen name="Message" component={MessageScreen} />
+        <Stack.Screen name="Chat" component={ChatScreen} />
+        <Stack.Screen name="Checkout" component={CheckoutScreen} />
+        
 
       </Stack.Navigator>
     </NavigationContainer>

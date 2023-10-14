@@ -1,12 +1,12 @@
-
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet,ScrollView } from 'react-native';
-import {ArrowLeftIcon} from 'react-native-heroicons/solid';
-import { useNavigation } from '@react-navigation/native'
+import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
+import { themeColors } from "../theme";
 
-const CartScreen = () => {
-  const navigation = useNavigation();
+const backgroundImage = require("../assets/images/regBackground.png");
+
+const CartScreen = ({ navigation }) => {
+
   const [cartItems, setCartItems] = useState([
     {
       id: "1",
@@ -65,38 +65,42 @@ const CartScreen = () => {
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Image source={item.image} className="w-24 h-24 m-4" />
+      <Image source={item.image} style={styles.itemImage} />
       <View style={styles.itemDetails}>
-        <Text className="text-lg">{item.name}</Text>
-        <Text className="text-gray-700">LKR {(item.price * item.quantity).toFixed(2)}</Text>
+        <Text style={styles.itemName}>{item.name}</Text>
+        <Text style={styles.itemPrice}>LKR {(item.price * item.quantity).toFixed(2)}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity onPress={() => decreaseQuantity(item)} style={styles.quantityButton}>
-            <Text className="text-white font-bold">-</Text>
+            <Text style={styles.quantityButtonText}>-</Text>
           </TouchableOpacity>
-          <Text className="text-lg">{item.quantity}</Text>
+          <Text style={styles.quantityText}>{item.quantity}</Text>
           <TouchableOpacity onPress={() => increaseQuantity(item)} style={styles.quantityButton}>
-            <Text className="text-white font-bold">+</Text>
+            <Text style={styles.quantityButtonText}>+</Text>
           </TouchableOpacity>
         </View>
       </View>
       <TouchableOpacity onPress={() => removeItem(item)} style={styles.removeButton}>
-        <Text className="text-white font-bold">Remove</Text>
+        <Text style={styles.removeButtonText}>Remove</Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
-
-    <SafeAreaView className="flex-1">
-      <View className="flex-row ">
-        <TouchableOpacity 
-          onPress={()=> navigation.goBack()}
-          className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">
-          <ArrowLeftIcon size="20" color="black" />
-        </TouchableOpacity>
-      </View> 
-      <View className="flex-1 m-1">
-        <Text className="text-center text-2xl font-bold mb-2">Shopping Cart</Text>
+    <ImageBackground
+    source={backgroundImage}
+    style={{ flex: 1, backgroundColor: themeColors.bg }}
+  >
+    <View
+      className="flex-1 bg-white "
+      style={{
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        backgroundColor: "rgba(255, 255, 255, 0.75)",
+      }}
+    >
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <Text style={styles.cartTitle}>Shopping Cart</Text>
         <FlatList
           data={cartItems}
           renderItem={renderItem}
@@ -104,24 +108,54 @@ const CartScreen = () => {
         />
         <View style={styles.totalContainer}>
           <Text style={styles.totalText}>Total: LKR {calculateTotal().toFixed(2)}</Text>
-          <TouchableOpacity className="bg-[#3da749] m-2">
-            <Text className="text-white font-bold">Proceed to Checkout</Text>
+          <TouchableOpacity style={styles.checkoutButton} onPress={() => navigation.navigate("Checkout")}>
+            <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
+    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  
+  safeArea: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+  cartTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 16,
+    marginBottom: 16,
+    textAlign: 'center',
+  },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    margin: 8,
+
+  },
+  itemImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 5,
+    marginRight: 16,
   },
   itemDetails: {
     flex: 1,
+  },
+  itemName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  itemPrice: {
+    fontSize: 16,
+    color: 'gray',
   },
   quantityContainer: {
     flexDirection: 'row',
@@ -134,17 +168,30 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginHorizontal: 8,
   },
+  quantityButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  quantityText: {
+    fontSize: 18,
+  },
   removeButton: {
     backgroundColor: '#f33737',
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 5,
   },
+  removeButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
   totalContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 60,
+    marginBottom: 50,
+    marginTop: 16,
   },
   totalText: {
     fontSize: 20,
@@ -152,9 +199,13 @@ const styles = StyleSheet.create({
   },
   checkoutButton: {
     backgroundColor: '#3da749',
-    paddingVertical: 28,
+    paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 5,
+  },
+  checkoutButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
   },
 });
 
