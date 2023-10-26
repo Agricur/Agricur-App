@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity, Image, ScrollView, ImageBackground, StyleSheet  } from 'react-native'
 import React from 'react'
+import PageHeader from '../components/PageHeader'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
 import { themeColors } from '../theme'
-import Icon from 'react-native-vector-icons/FontAwesome5'; 
 
 const Logo = require('../assets/images/Logo.png');
 const backgroundImage = require('../assets/images/regBackground.png');
@@ -45,27 +45,11 @@ const ShopsScreen = () => {
       <View className="flex-1 bg-white "
         style={{borderTopLeftRadius: 40, borderTopRightRadius: 40,backgroundColor: 'rgba(255, 255, 255, 0.75)'}}
       > 
-            <SafeAreaView className="flex">
-        <View className="flex-row justify-start">
-            <TouchableOpacity 
-                onPress={()=> navigation.goBack()}
-                className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
-            >
-                <ArrowLeftIcon size="20" color="black" />
-            </TouchableOpacity>
-        </View>
-               
-        </SafeAreaView>   
-        <View className="flex-row items-center justify-center">
-          <View className="flex-1 ">
-            <Image source={Logo} className = "ml-20 w-16 h-16" />
-          </View>
-          <View className="flex-1">
-            <Text className="font-bold text-sm italic text-[#205526]  mb-2 ">
-              Your Trusted Partner in Agriculture Excellence
-            </Text>
-          </View>
-        </View>  
+        
+        <SafeAreaView className="flex">
+            <PageHeader />
+        </SafeAreaView>
+
         <Text className="text-2xl font-bold tracking-tight text-center mt-4">
             All Shops
         </Text>
