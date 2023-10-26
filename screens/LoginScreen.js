@@ -62,6 +62,7 @@ const LoginScreen = () => {
           <Image source={Logo} style={{ width: 200, height: 200 }} />
         </View>
       </SafeAreaView>
+
       <View
         style={{ borderTopLeftRadius: 50, borderTopRightRadius: 50 }}
         className="flex-1 bg-white px-8 pt-8"
