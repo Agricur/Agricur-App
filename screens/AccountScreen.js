@@ -24,7 +24,7 @@ const AccountScreen = () => {
           }}
         >
     <SafeAreaView>
-      <View className="flex-row ">
+      <View className="flex-row mt-12 ">
         <TouchableOpacity 
           onPress={()=> navigation.goBack()}
           className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4">

@@ -38,12 +38,27 @@ const districts = [
   ];
 
 
-export default function SignUpScreen() {
+const SignUpScreen = () => {
     const navigation = useNavigation();
     const [value, setValue] = useState(null);
-    const goBack = () => {
-        navigation.navigate(DropDown);
-      };
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [houseNumber, setHouseNumber] = useState('');
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
+
+    
+  const handleSignUp = () => {
+
+    // Implement your sign-up logic here
+    // You can access the user input values (firstName, lastName, email, etc.) from the state.
+    // Validate the user input and proceed with registration.
+  };
+
   return (
     <ImageBackground
     source={backgroundImage}
@@ -83,40 +98,46 @@ export default function SignUpScreen() {
             <Text className="font-semibold ml-4">First Name</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="First Name"
-                placeholder='Enter Name'
+                placeholder="Enter First Name"
+                value={firstName}
+                onChangeText={text => setFirstName(text)}
             />
             <Text className="font-semibold  ml-4">Second Name</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="Second Name"
-                placeholder='Enter Name'
+                placeholder="Enter Second Name"
+                value={lastName}
+                onChangeText={text => setLastName(text)}
             />
             <Text className="font-semibold  ml-4">Email</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="Email"
-                placeholder='Enter Email'
+                placeholder="Enter Email"
+                value={email}
+                onChangeText={text => setEmail(text)}
             />
             <Text className="font-semibold ml-4">Address</Text>
             <Text className="text-gray-700 font-semibold  ml-4">House Number</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="House Number"
-                placeholder='Enter House Number'
+                placeholder="Enter House Number"
+                value={houseNumber}
+                onChangeText={text => setHouseNumber(text)}
             />
             
             <Text className="text-gray-700 font-semibold ml-4">Street</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="Street"
-                placeholder='Enter Street'
+                placeholder="Enter Street"
+                value={street}
+                onChangeText={text => setStreet(text)}
             />
             <Text className="text-gray-700 font-semibold ml-4">City</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="City"
-                placeholder='Enter City'
+                placeholder="Enter City"
+                value={city}
+                onChangeText={text => setCity(text)}
             />
             <Text className="text-gray-700 font-semibold ml-4">Select District</Text>
             <Dropdown
@@ -140,22 +161,25 @@ export default function SignUpScreen() {
             <Text className="font-semibold  ml-4">Phone Number</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-3"
-                value="Phone Number"
-                placeholder='Enter Phone Number'
+                placeholder="Enter Phone Number"
+                value={phoneNumber}
+                onChangeText={text => setPhoneNumber(text)}
             />
             <Text className="font-semibold  ml-4">Password</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-7"
                 secureTextEntry
-                value="test12345"
-                placeholder='Enter Password'
+                placeholder="Enter Password"
+                value={password}
+                onChangeText={text => setPassword(text)}
             />
             <Text className="font-semibold ml-4">Re-Enter Password</Text>
             <TextInput
                 className="p-4 bg-gray-100 text-gray-700 rounded-2xl mb-7"
                 secureTextEntry
-                value="test12345"
-                placeholder='Enter Password'
+                placeholder="Re-Enter Password"
+                value={rePassword}
+                onChangeText={text => setRePassword(text)}
             />
             <TouchableOpacity className="py-3 bg-[#3da749] rounded-xl">
                 <Text className="font-xl font-bold text-center text-white">
@@ -179,8 +203,12 @@ export default function SignUpScreen() {
     </ImageBackground>
   )
 }
+
+export default SignUpScreen;
+
 const styles = StyleSheet.create({
     selectedTextStyle: {
       fontSize: 14,
     },
   });
+

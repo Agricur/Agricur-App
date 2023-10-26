@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import PageHeader from "../components/PageHeader";
 import { useNavigation } from "@react-navigation/native";
 import { themeColors } from "../theme";
 
@@ -53,19 +53,21 @@ const styles = StyleSheet.create({
 });
 
 const categories = [
-  { id: "1", name: "Fruits", image: Fruits },
+  { id: "1", name: "Fruits", image: Fruits, route: "FruitScreen" },
   {
     id: "2",
     name: "Vegetables",
     image: Vegetables,
+    route: "VegScreen",
   },
-  { id: "3", name: "Grains", image: Grains },
+  { id: "3", name: "Grains", image: Grains, route: "GrainScreen" },
   {
     id: "4",
     name: "Fertilizers",
     image: Fertilizers,
+    route: "FertScreen",
   },
-  { id: "5", name: "Equipments", image: Equipments },
+  { id: "5", name: "Equipments", image: Equipments, route: "EquipScreen" },
 ];
 
 const CategoryScreen = () => {
@@ -88,33 +90,18 @@ const CategoryScreen = () => {
           }}
         >
           <SafeAreaView className="flex">
-            <View className="flex-row ">
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
-              >
-                <ArrowLeftIcon size="20" color="black" />
-              </TouchableOpacity>
-            </View>
+            <PageHeader />
           </SafeAreaView>
-          <View className="flex-row items-center justify-center">
-            <View className="flex-1 ">
-              <Image source={Logo} className="ml-20 w-16 h-16" />
-            </View>
-            <View className="flex-1">
-              <Text className="font-bold text-sm italic text-[#205526]  mb-2 ">
-                Your Trusted Partner in Agriculture Excellence
-              </Text>
-            </View>
+
+          <View className="mt-2">
+            <Text className="text-2xl font-bold tracking-tight text-center my-1 text-[#205526]">
+              Categories
+            </Text>
           </View>
 
           <ScrollView style={{ flex: 1, backgroundColor: themeColors.bg }}>
             <SafeAreaView style={{ flex: 1 }}>
               <View style={styles.categoryContainer}>
-                <Text className="text-2xl font-bold tracking-tight text-center my-1 text-[#205526]">
-                  Categories
-                </Text>
-
                 <View style={styles.categoryGrid}>
                   {categories.map((category) => (
                     <TouchableOpacity
@@ -122,9 +109,7 @@ const CategoryScreen = () => {
                       style={styles.categoryItem}
                       onPress={() => {
                         // Handle category click here, e.g., navigate to category page
-                        navigation.navigate("Category", {
-                          categoryName: category.name,
-                        });
+                        navigation.navigate(category.route);
                       }}
                     >
                       <Image

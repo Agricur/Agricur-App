@@ -18,6 +18,11 @@ import AccountEditScreen from '../screens/AccountEditScreen';
 import MessageScreen from '../screens/MessageScreen';
 import ChatScreen from '../screens/ChatScreen';
 import CheckoutScreen from '../screens/CheckoutScreen';
+import FruitScreen from '../screens/categories/FruitScreen';
+import VegScreen from '../screens/categories/VegScreen';
+import FertScreen from '../screens/categories/FertScreen';
+import GrainsScreen from '../screens/categories/GrainsScreen';
+import EquipScreen from '../screens/categories/EquipScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -32,6 +37,11 @@ export default function AppNavigation() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp"  component={SignUpScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="FruitScreen" component={FruitScreen} />
+        <Stack.Screen name="VegScreen" component={VegScreen} />
+        <Stack.Screen name="FertScreen" component={FertScreen} />
+        <Stack.Screen name="GrainScreen" component={GrainsScreen} />
+        <Stack.Screen name="EquipScreen" component={EquipScreen} />
         <Stack.Screen name="OneItem" component={OneItemScreen} />
         <Stack.Screen name="Account" component={AccountScreen} />
         <Stack.Screen name="InsideCategory" component={InsideCategoryScreen} />
