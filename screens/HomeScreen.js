@@ -189,7 +189,7 @@ export default function HomeScreen({ route, navigation }) {
                     <TouchableOpacity
                       key={product.product_id} // Add a unique key here, for example, product.id
                       style={styles.productItem}
-                      onPress={() => navigations.navigate("OneItem")}
+                      onPress={() => navigations.navigate("OneItem", { productID : product.product_id })}
                     >
                       <Image
                         // source={product.image}
@@ -200,7 +200,7 @@ export default function HomeScreen({ route, navigation }) {
                       />
                       <Text style={styles.productName}>{product.name}</Text>
                       <Text style={styles.productPrice}>
-                        Price: ${product.price}
+                        Price: LKR {product.price}
                       </Text>
                       <View
                         style={{ flexDirection: "row", alignItems: "center" }}

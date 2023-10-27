@@ -13,7 +13,6 @@ import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import {server} from  "../server";
 import { themeColors } from "../theme";
 import { useNavigation } from "@react-navigation/native";
-import Backbutton from "../components/Backbutton";
 const Logo = require("../assets/images/Logo.png");
 
 const LoginScreen = () => {
@@ -31,12 +30,11 @@ const LoginScreen = () => {
       });
 
       if (res.status === 201) {
-        Alert.alert("Success", res.message);
         const data = await res.json();
         const user_id = data.user_id;
         navigation.navigate("HomePage", { user_id: user_id });
       } else {
-        Alert.alert("Error", res.message);
+        Alert.alert("Error", "Invalid email or password");
       }
     } catch (err) {
       Alert.alert("Error", err.message);
@@ -90,8 +88,8 @@ const LoginScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             className="py-3 bg-[#3da749] rounded-xl"
-            // onPress={() => handleLogin()}
-            onPress={() => navigation.navigate("HomePage")}
+            onPress={() => handleLogin()}
+            // onPress={() => navigation.navigate("HomePage")}
           >
             <Text className="text-xl font-bold text-center text-white">
               Login
