@@ -117,31 +117,37 @@ const CheckoutScreen = () => {
 
                 <View style={styles.tableRow}>
                   <Text style={styles.productCell}>Product_1 x1</Text>
-                  <Text style={styles.priceCell}>20.00</Text>
-                  <Text style={styles.priceCell}>20.00</Text>
+                  <Text style={styles.priceCell}>10.00</Text>
+                  <Text style={styles.priceCell}>10.00</Text>
                 </View>
 
                 <View style={styles.tableRow}>
-                  <Text style={styles.productCell}>Product_2 x2</Text>
-                  <Text style={styles.priceCell}>30.00</Text>
-                  <Text style={styles.priceCell}>60.00</Text>
+                  <Text style={styles.productCell}>Product_2 x1</Text>
+                  <Text style={styles.priceCell}>15.00</Text>
+                  <Text style={styles.priceCell}>15.00</Text>
                 </View>
 
                 <View style={styles.tableRow}>
-                  <Text style={styles.productCell}>Product_3 x3</Text>
-                  <Text style={styles.priceCell}>40.00</Text>
-                  <Text style={styles.priceCell}>120.00</Text>
+                  <Text style={styles.productCell}>Product_3 x1</Text>
+                  <Text style={styles.priceCell}>10.00</Text>
+                  <Text style={styles.priceCell}>10.00</Text>
+                </View>
+
+                <View style={styles.tableRow}>
+                  <Text style={styles.productCell}>Product_4 x1</Text>
+                  <Text style={styles.priceCell}>15.00</Text>
+                  <Text style={styles.priceCell}>15.00</Text>
                 </View>
               </View>
 
               <View style={styles.totalRow}>
                 <Text style={styles.totalText}>Shipping Cost</Text>
-                <Text style={styles.totalText}>Rs. 200</Text>
+                <Text style={styles.totalText}>Rs. 200.00</Text>
               </View>
 
               <View style={styles.totalRow}>
                 <Text style={styles.totalText}>Total</Text>
-                <Text style={styles.totalAmount}>Rs. 400</Text>
+                <Text style={styles.totalAmount}>Rs. 250.00</Text>
               </View>
 
               <TouchableOpacity style={styles.placeOrderButton}>
