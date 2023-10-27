@@ -10,7 +10,11 @@ import ShopsScreen from "../screens/ShopsScreen";
 
 const TabStack = createBottomTabNavigator();
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = ({route, navigation}) => {
+
+  // const user_id  = route.params.user_id;
+  // console.log(user_id);
+
   return (
     <TabStack.Navigator
       screenOptions={({ route }) => ({

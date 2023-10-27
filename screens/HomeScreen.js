@@ -7,12 +7,13 @@ import {
   ImageBackground,
   StyleSheet,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { themeColors } from "../theme";
-
+import StarRating from "../components/StarRatings";
+import {server} from "../server";
+import PageHeader from "../components/PageHeader";
 
 const Logo = require("../assets/images/Logo.png");
 const backgroundImage = require("../assets/images/regBackground.png");
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 16,
     marginVertical: 10,
-    marginBottom: 20
+    marginBottom: 20,
   },
   categoryItem: {
     width: "48%",
@@ -94,30 +95,37 @@ const styles = StyleSheet.create({
 });
 
 const categories = [
-  { id: "1", name: "Fruits", image: Fruits },
+  { id: "1", name: "Fruits", image: Fruits, route: "FruitScreen" },
   {
     id: "2",
     name: "Vegetables",
-    image: Vegetables
+    image: Vegetables,
+    route: "VegScreen",
   },
-  { id: "3", name: "Grains", image: Grains},
+  { id: "3", name: "Grains", image: Grains, route: "GrainScreen" },
   {
     id: "4",
     name: "Fertilizers",
-    image: Fertilizers
+    image: Fertilizers,
+    route: "FertScreen",
   },
-  { id: "5", name: "Equipments", image: Equipments },
+  { id: "5", name: "Equipments", image: Equipments, route: "EquipScreen" },
 ];
 
-const products = [
-  { id: "1", name: "Passion Fruit", image: Product_1 },
-  { id: "2", name: "Passion Fruit", image: Product_1_1 },
-  { id: "3", name: "Passion Fruit", image: Product_1_1 },
-  { id: "4", name: "Passion Fruit", image: Product_1 },
-];
+export default function HomeScreen({ route, navigation }) {
+  const [products, setProducts] = useState([]);
 
-export default function HomeScreen() {
-  const navigation = useNavigation();
+  useEffect(() => {
+    const apiURL = `${server}/api/product/getAllProducts`;
+
+    fetch(apiURL, { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data.products);
+      });
+  }, []);
+
+  const navigations = useNavigation();
   return (
     <ImageBackground
       source={backgroundImage}
@@ -136,33 +144,8 @@ export default function HomeScreen() {
           }}
         >
           <SafeAreaView className="flex">
-            <View className="flex-row justify-start">
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                className="bg-[#3da749] p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
-              >
-                <ArrowLeftIcon size="20" color="black" />
-                  
-              </TouchableOpacity>
-            </View>
+            <PageHeader />
           </SafeAreaView>
-
-          <View className="flex-row items-center justify-center">
-            <View className="flex-1 ">
-              <Image source={Logo} className="ml-20 w-16 h-16" />
-            </View>
-            <View className="flex-1">
-              <Text className="font-bold text-sm italic text-[#205526]  mb-2 ">
-                Your Trusted Partner in Agriculture Excellence
-              </Text>
-              {/* <TouchableOpacity 
-              onPress={() => navigation.navigate(DropDown)}
-              className="bg-[#3da749] w-5 h-5 items-center justify-center m-2 rounded-md">
-                <Icon name="store" size={24} color="white" />
-      
-              </TouchableOpacity> */}
-            </View>
-          </View>
 
           <ScrollView
             style={{
@@ -183,9 +166,7 @@ export default function HomeScreen() {
                       key={category.id}
                       style={styles.categoryItem}
                       onPress={() => {
-                        navigation.navigate("Category", {
-                          categoryName: category.name,
-                        });
+                        navigations.navigate(category.route);
                       }}
                     >
                       <Image
@@ -206,15 +187,27 @@ export default function HomeScreen() {
                 <View style={styles.productGrid}>
                   {products.map((product) => (
                     <TouchableOpacity
-                      key={product.id}
+                      key={product.product_id} // Add a unique key here, for example, product.id
                       style={styles.productItem}
-                      onPress={() => navigation.navigate("OneItem")}
+                      onPress={() => navigations.navigate("OneItem")}
                     >
                       <Image
-                        source={product.image}
+                        // source={product.image}
+
+                        source={{ uri: `${server}/${product.image}` }} // Use the image path from your product data
+                        // source = "organic-fresh-and-dried-apricots-royalty-free-image-1690216440-1694427491990-390740334.png"
                         style={styles.productImage}
                       />
                       <Text style={styles.productName}>{product.name}</Text>
+                      <Text style={styles.productPrice}>
+                        Price: ${product.price}
+                      </Text>
+                      <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                      >
+                        <Text style={{ marginRight: 5 }}>Ratings:</Text>
+                        <StarRating rating={product.rating} numStars={5} />
+                      </View>
                     </TouchableOpacity>
                   ))}
                 </View>
