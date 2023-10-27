@@ -195,7 +195,7 @@ const SignUpScreen = () => {
         <View className="flex-row justify-center m-7 ">
             <Text className=" font-semibold">Already have an account?</Text>
             <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
-                <Text className="font-semibold text-[#3da749] "> Login</Text>
+                <Text className="font-semibold text-[#3da749] "> Sign In</Text>
             </TouchableOpacity>
         </View>
       </View>
