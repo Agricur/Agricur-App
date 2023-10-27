@@ -4,12 +4,39 @@ import { themeColors } from '../theme'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {ArrowLeftIcon} from 'react-native-heroicons/solid';
 import { useNavigation } from '@react-navigation/native';
+import { useState, useEffect } from 'react';
+import { server } from '../server';
+
 
 const backgroundImage = require('../assets/images/Signup.jpg');
 const profilePhoto = require('../assets/images/userImage.png');
 
 const AccountScreen = () => {
+
   const navigation = useNavigation();
+  const [buyerData, setBuyerData] = useState({
+    buyerName: "Buyer Name",
+    buyerEmail: "Buyer Email",
+    profilePhoto: null,
+  });
+
+  const userID = 112;
+
+  useEffect(() => {
+    const apiURL = `${server}/api/user/getInfo/${userID}`;
+
+    fetch(apiURL, { method: "GET" })
+    .then((response) => response.json())
+    .then((data) => {
+      setBuyerData({
+        ...buyerData,
+        buyerName: data.first_name,
+        buyerEmail: data.email,
+        profilePhoto: data.profile_photo,
+      });
+    })
+  }, []);
+
   return (
     <ImageBackground
     source={backgroundImage}
@@ -34,9 +61,9 @@ const AccountScreen = () => {
       <View className="bg-white-600 text-black text-center justify-center items-center">
           <Text className="text-center text-2xl font-bold">Account Information</Text>
           <View className="rounded-full">
-            <Image source={profilePhoto} className = "w-36 h-36 m-2 " />
-            <Text className="text-xl text-center font-semibold ">Buyer's Name</Text>
-            <Text className="text-gray-600 text-center text-sm mt-1 mb-4">buyer@example.com</Text>
+            <Image source={{ uri: `${server}/${buyerData.profilePhoto}`}} className = "w-36 h-36 m-5" />
+            <Text className="text-xl text-center font-semibold ">{buyerData.buyerName}</Text>
+            <Text className="text-gray-600 text-center text-sm mt-1 mb-4">{buyerData.buyerEmail}</Text>
           </View>
       <View className="mb-2">
       <TouchableOpacity

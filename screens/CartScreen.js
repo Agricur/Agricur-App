@@ -1,71 +1,97 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import { themeColors } from "../theme";
+import { server } from "../server";
+import { useNavigation } from "@react-navigation/native";
+
+
 
 const backgroundImage = require("../assets/images/regBackground.png");
 
 const CartScreen = ({ navigation }) => {
 
-  const [cartItems, setCartItems] = useState([
-    {
-      id: "1",
-      name: "Product 1",
-      price: 10,
-      image: require("../assets/images/product_1.jpg"),
-      quantity: 1,
-    },
-    {
-      id: "2",
-      name: "Product 2",
-      price: 15,
-      image: require("../assets/images/product_1_1.jpg"),
-      quantity: 1,
-    },
-    {
-      id: "3",
-      name: "Product 3",
-      price: 10,
-      image: require("../assets/images/product_1.jpg"),
-      quantity: 1,
-    },
-    {
-      id: "4",
-      name: "Product 4",
-      price: 15,
-      image: require("../assets/images/product_1_1.jpg"),
-      quantity: 1,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const apiURL = `${server}/api/cart/getCartMobile/112`;
+
+    fetch(apiURL, { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+        setCartItems(data.cartItems);
+      });
+  }, [cartItems]);
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
-  const increaseQuantity = (item) => {
+  const [refresh, setRefresh] = useState(0);
+
+  const increaseQuantity = async (item) => {
+
+    if (refresh < 4) {
+      setRefresh(refresh + 1);
+    } else {
+      navigation.navigate('Cart');
+      setRefresh(0);
+    }
+
+
     const updatedCart = [...cartItems];
-    const index = updatedCart.findIndex((cartItem) => cartItem.id === item.id);
+    const index = updatedCart.findIndex((cartItem) => cartItem.product_id === item.product_id);
     updatedCart[index].quantity++;
     setCartItems(updatedCart);
+
+    const res = await fetch(`${server}/api/cart/updateCartMobile/112`, {
+      // cartItems: updatedCartItems,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: 112, cartItems: updatedCart }),
+  })
   };
 
-  const decreaseQuantity = (item) => {
+  const decreaseQuantity = async (item) => {
+    
+    if (refresh < 4) {
+      setRefresh(refresh + 1);
+    } else {
+      navigation.navigate('Cart');
+      setRefresh(0);
+    }
+    
     const updatedCart = [...cartItems];
-    const index = updatedCart.findIndex((cartItem) => cartItem.id === item.id);
+    const index = updatedCart.findIndex((cartItem) => cartItem.product_id === item.product_id);
     if (updatedCart[index].quantity > 1) {
       updatedCart[index].quantity--;
       setCartItems(updatedCart);
     }
+
+    const res = await fetch(`${server}/api/cart/updateCartMobile/112`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: 112, cartItems: updatedCart }),
+    });
   };
 
-  const removeItem = (item) => {
-    const updatedCart = cartItems.filter((cartItem) => cartItem.id !== item.id);
+  const removeItem = async (item) => {
+
+    navigation.navigate('Cart');
+
+    const updatedCart = cartItems.filter((cartItem) => cartItem.product_id !== item.product_id);
     setCartItems(updatedCart);
+
+    const res = await fetch(`${server}/api/cart/removeItemsMobile/112`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: 112, cartItems: updatedCart }),
+    });
   };
 
   const renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Image source={item.image} style={styles.itemImage} />
+      <Image source={{ uri: `${server}/${item.image}`}} style={styles.itemImage} />
       <View style={styles.itemDetails}>
         <Text style={styles.itemName}>{item.name}</Text>
         <Text style={styles.itemPrice}>LKR {(item.price * item.quantity).toFixed(2)}</Text>
@@ -104,7 +130,7 @@ const CartScreen = ({ navigation }) => {
         <FlatList
           data={cartItems}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.product_id}
         />
         <View style={styles.totalContainer}>
           <Text style={styles.totalText}>Total: LKR {calculateTotal().toFixed(2)}</Text>
@@ -117,7 +143,8 @@ const CartScreen = ({ navigation }) => {
     </View>
     </ImageBackground>
   );
-};
+}
+;
 
 const styles = StyleSheet.create({
   safeArea: {
