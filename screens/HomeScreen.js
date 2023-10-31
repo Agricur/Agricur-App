@@ -187,15 +187,12 @@ export default function HomeScreen({ route, navigation }) {
                 <View style={styles.productGrid}>
                   {products.map((product) => (
                     <TouchableOpacity
-                      key={product.product_id} // Add a unique key here, for example, product.id
+                      key={product.product_id}
                       style={styles.productItem}
                       onPress={() => navigations.navigate("OneItem", { productID : product.product_id })}
                     >
                       <Image
-                        // source={product.image}
-
-                        source={{ uri: `${server}/${product.image}` }} // Use the image path from your product data
-                        // source = "organic-fresh-and-dried-apricots-royalty-free-image-1690216440-1694427491990-390740334.png"
+                        source={{ uri: `${server}/${product.image}` }}
                         style={styles.productImage}
                       />
                       <Text style={styles.productName}>{product.name}</Text>

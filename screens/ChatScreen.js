@@ -13,8 +13,7 @@ const backgroundImage = require("../assets/images/regBackground.png");
 const ChatScreen = () => {
 
     const navigation = useNavigation();
-    const route = useRoute(); // Use useRoute to access route.params
-    // Access the 'item' passed from MessageScreen
+    const route = useRoute();
     const { item } = route.params;
     const Img = item.image;
     const [messages, setMessages] = useState([]);

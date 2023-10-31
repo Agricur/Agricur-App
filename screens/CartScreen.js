@@ -9,12 +9,13 @@ import { useNavigation } from "@react-navigation/native";
 
 const backgroundImage = require("../assets/images/regBackground.png");
 
-const CartScreen = ({ navigation }) => {
+const CartScreen = ({ route, navigation }) => {
 
+  const user_id = route.params.user_id;
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const apiURL = `${server}/api/cart/getCartMobile/112`;
+    const apiURL = `${server}/api/cart/getCartMobile/${user_id}`;
 
     fetch(apiURL, { method: "GET" })
       .then((response) => response.json())
@@ -44,11 +45,10 @@ const CartScreen = ({ navigation }) => {
     updatedCart[index].quantity++;
     setCartItems(updatedCart);
 
-    const res = await fetch(`${server}/api/cart/updateCartMobile/112`, {
-      // cartItems: updatedCartItems,
+    const res = await fetch(`${server}/api/cart/updateCartMobile/113`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: 112, cartItems: updatedCart }),
+      body: JSON.stringify({ user_id: 113, cartItems: updatedCart }),
   })
   };
 
@@ -68,10 +68,10 @@ const CartScreen = ({ navigation }) => {
       setCartItems(updatedCart);
     }
 
-    const res = await fetch(`${server}/api/cart/updateCartMobile/112`, {
+    const res = await fetch(`${server}/api/cart/updateCartMobile/113`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: 112, cartItems: updatedCart }),
+      body: JSON.stringify({ user_id: 113, cartItems: updatedCart }),
     });
   };
 
@@ -85,7 +85,7 @@ const CartScreen = ({ navigation }) => {
     const res = await fetch(`${server}/api/cart/removeItemsMobile/112`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: 112, cartItems: updatedCart }),
+      body: JSON.stringify({ user_id: 113, cartItems: updatedCart }),
     });
   };
 
