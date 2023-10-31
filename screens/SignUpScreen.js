@@ -54,9 +54,6 @@ const SignUpScreen = () => {
     
   const handleSignUp = () => {
 
-    // Implement your sign-up logic here
-    // You can access the user input values (firstName, lastName, email, etc.) from the state.
-    // Validate the user input and proceed with registration.
   };
 
   return (

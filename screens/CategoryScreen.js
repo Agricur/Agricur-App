@@ -108,7 +108,6 @@ const CategoryScreen = () => {
                       key={category.id}
                       style={styles.categoryItem}
                       onPress={() => {
-                        // Handle category click here, e.g., navigate to category page
                         navigation.navigate(category.route);
                       }}
                     >

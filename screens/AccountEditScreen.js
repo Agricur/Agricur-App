@@ -21,7 +21,7 @@ const AccountEditScreen = () => {
     'Phone Number' : '0771234567',
   });
 
-  // Track the field that is currently being edited
+
   const [editingField, setEditingField] = useState('');
 
   const handleEdit = (field) => {
@@ -30,7 +30,6 @@ const AccountEditScreen = () => {
   };
 
   const handleSave = () => {
-    // Implement logic to save updated user details to the backend
     setEditMode(false);
     setEditingField('');
   };

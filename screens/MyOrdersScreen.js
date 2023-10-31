@@ -22,7 +22,7 @@ const completedOrders = [
     status: "Processing",
     totalAmount: "Rs. 465",
     productName: "Product A",
-    productImage: require("../assets/images/product_1_1.jpg"), // Replace with your image path
+    productImage: require("../assets/images/product_1_1.jpg"), 
   },
   {
     id: "2",
@@ -31,7 +31,7 @@ const completedOrders = [
     status: "Processing",
     totalAmount: "Rs. 465",
     productName: "Rs. 465",
-    productImage: require("../assets/images/product_1_1.jpg"), // Replace with your image path
+    productImage: require("../assets/images/product_1_1.jpg"), 
   },
   {
     id: "3",
@@ -40,7 +40,7 @@ const completedOrders = [
     status: "Shipped",
     totalAmount: "Rs. 465",
     productName: "Product A",
-    productImage: require("../assets/images/product_1_1.jpg"), // Replace with your image path
+    productImage: require("../assets/images/product_1_1.jpg"), 
   },
 
   {
@@ -50,7 +50,7 @@ const completedOrders = [
     status: "Pending",
     totalAmount: "Rs. 562",
     productName: "Product A",
-    productImage: require("../assets/images/product_1_1.jpg"), // Replace with your image path
+    productImage: require("../assets/images/product_1_1.jpg"), 
   },
 ];
 

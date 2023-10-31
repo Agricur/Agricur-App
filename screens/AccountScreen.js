@@ -9,9 +9,8 @@ import { server } from '../server';
 
 
 const backgroundImage = require('../assets/images/Signup.jpg');
-const profilePhoto = require('../assets/images/userImage.png');
 
-const AccountScreen = () => {
+const AccountScreen = ({route}) => {
 
   const navigation = useNavigation();
   const [buyerData, setBuyerData] = useState({
@@ -20,7 +19,7 @@ const AccountScreen = () => {
     profilePhoto: null,
   });
 
-  const userID = 112;
+  const userID = 113;
 
   useEffect(() => {
     const apiURL = `${server}/api/user/getInfo/${userID}`;

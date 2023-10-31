@@ -68,12 +68,10 @@ export default function OneItemScreen({ route, navigation }) {
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <Text>Ratings : </Text>
               <StarRating rating={rating} numStars={5} />
-              {/* StarRating component can be added here */}
             </View>
             <Text>Category: {itemData?.category}</Text>
             <Text>Price: LKR {itemData?.price}</Text>
             <Text>Quantity: {itemData?.quantity}</Text>
-            {/* <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>Stock:</Text> */}
             <TouchableOpacity
               style={{
                 backgroundColor: '#3da749',

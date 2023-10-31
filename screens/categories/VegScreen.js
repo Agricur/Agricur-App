@@ -128,14 +128,14 @@ function VegScreen() {
                     <View style={styles.productGrid}>
                       {products.map((product) => (
                         <TouchableOpacity
-                          key={product.product_id} // Add a unique key here, for example, product.id
+                          key={product.product_id} // Adding a unique key.
                           style={styles.productItem}
                           onPress={() => navigations.navigate("OneItem", { productID : product.product_id })}
                         >
                           <Image
                             source={{
                               uri: `${server}/${product.image}`,
-                            }} // Use the image path from your product data
+                            }}
                             style={styles.productImage}
                           />
                           <Text style={styles.productName}>{product.name}</Text>

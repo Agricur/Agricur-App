@@ -136,14 +136,14 @@ const ShopsScreen = () => {
                   <View style={styles.shopGrid}>
                     {shopData.map((shop) => (
                       <TouchableOpacity
-                        key={shop.shop_id} // Add a unique key here, for example, product.id
+                        key={shop.shop_id}
                         style={styles.shopItem}
-                        onPress={() => navigations.navigate("OneItem")}
+                        onPress={() => navigations.navigate("Shops")}
                       >
                         <Image
                           source={{
                             uri: `${server}/${shop.image}`,
-                          }} // Use the image path from your product data
+                          }}
                           style={styles.shopImage}
                         />
                         <Text style={styles.shopName}>{shop.shop_name}</Text>

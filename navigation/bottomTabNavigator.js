@@ -12,8 +12,7 @@ const TabStack = createBottomTabNavigator();
 
 const BottomTabNavigator = ({route, navigation}) => {
 
-  // const user_id  = route.params.user_id;
-  // console.log(user_id);
+  const user_id  = route.params.user_id;
 
   return (
     <TabStack.Navigator
@@ -39,11 +38,11 @@ const BottomTabNavigator = ({route, navigation}) => {
         },
       })}
     >
-      <TabStack.Screen name="Home" component={HomeScreen} />
-      <TabStack.Screen name="Shops" component={ShopsScreen} />
-      <TabStack.Screen name="Categories" component={CategoryScreen} />
-      <TabStack.Screen name="Cart" component={CartScreen} />
-      <TabStack.Screen name="Account" component={AccountScreen} />
+      <TabStack.Screen name="Home" initialParams={{user_id: user_id}} component={HomeScreen} />
+      <TabStack.Screen name="Shops" initialParams={{user_id: user_id}} component={ShopsScreen} />
+      <TabStack.Screen name="Categories" initialParams={{user_id: user_id}} component={CategoryScreen} />
+      <TabStack.Screen name="Cart" initialParams={{user_id: user_id}} component={CartScreen} />
+      <TabStack.Screen name="Account" initialParams={{user_id: user_id}} component={AccountScreen} />
     </TabStack.Navigator>
   );
 };
